@@ -1,0 +1,2 @@
+# Cursor Rails [In Development]
+A utility that allows you to lock the horizontal/vertical movement of your cursor using hotkeys, for more precise mouse inputs, hence the name "cursor rails", as this effectively adds "rails" onto your cursor, allowing it to only move on one axis. This utility will make heavy use of WinAPI, and as such, will be exclusive to Windows. This project is currently in development, no release exists yet, and the codebase is in its infancy, check back later.
