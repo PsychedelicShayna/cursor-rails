@@ -2,6 +2,7 @@
 #define MAINWINDOW_HXX
 
 #include <QtWidgets/QMainWindow>
+#include <hotkey_recorder_widget.hpp>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
