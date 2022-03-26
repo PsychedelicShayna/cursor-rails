@@ -8,7 +8,7 @@ QMAKE_CXXFLAGS += /std:c++17
 TARGET = cursor-rails
 
 SOURCES += \
-    source/main.cxx               \
+    source/main.cpp \
     source/main_window_dialog.cxx
 
 HEADERS += \
