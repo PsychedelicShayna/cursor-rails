@@ -1,28 +1,60 @@
 #ifndef MAINWINDOW_HXX
 #define MAINWINDOW_HXX
 
+#ifndef WIN32_MEAN_AND_LEAN
+#define WIN32_MEAN_AND_LEAN
+#endif
+
+#include <Windows.h>
+
+#include <QtCore/QResource>
+#include <QtCore/QFileInfo>
+#include <QtCore/QFile>
+#include <QtCore/QTimer>
+
 #include <QtWidgets/QMainWindow>
+
 #include <hotkey_recorder_widget.hpp>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
+extern qsizetype ApplyStylesheetFile(QWidget* widget, const QString& stylesheet_file_path);
+
 class MainWindow : public QMainWindow {
 Q_OBJECT
 
-private:
+signals:
+    void horizontalRailHotkeyPressed();
+    void verticalRailHotkeyPressed();
+
+protected:
     Ui::MainWindow* ui;
 
-    HotkeyRecorderWidget* hotkeyRecorderHorizontalRail, *hotkeyRecorderVerticalRail;
-    uint32_t              horizontalRailHotkeyId,        verticalRailHotkeyId;
+    HotkeyRecorderWidget* hotkeyRecorderHorizontalRail,
+                        * hotkeyRecorderVerticalRail;
 
-    Q_SLOT void registerHorizontalRailHotkey(HotkeyRecorderWidget::Hotkey hotkey);
-    Q_SLOT void registerVerticalRailHotkey(HotkeyRecorderWidget::Hotkey hotkey);
+    struct CursorRailData {
+        uint32_t    hotkeyId;
+        uint32_t    hotkeyVkid;
+        RECT        railRect;
+        POINT       cursorPos;
+        bool        activated;
 
-    Q_SLOT void on_spinBoxHorizontalHotkeyVkid_valueChanged(int);
-    Q_SLOT void on_spinBoxVerticalHotkeyVkid_valueChanged(int);
+        CursorRailData(const quint32& hotkey_id);
+    } horizontalRail, verticalRail;
 
+    QTimer* timerApplyActivatedRails;
+
+public slots:
+    void toggleHorizontalRailActivated();
+    void toggleVerticalRailActivated();
+
+    void registerHorizontalRailHotkey(HotkeyRecorderWidget::Hotkey hotkey);
+    void registerVerticalRailHotkey(HotkeyRecorderWidget::Hotkey hotkey);
+
+protected:
     virtual bool nativeEvent(const QByteArray& event_type, void* message, qintptr* result) override;
 
 public:

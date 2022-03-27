@@ -20,3 +20,5 @@ HEADERS += \
 
 FORMS += \
     source/main_window_dialog.ui
+
+LIBS += user32.lib
