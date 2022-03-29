@@ -125,6 +125,16 @@ void MainWindow::spawnVkidTableDialog() {
     }
 }
 
+void MainWindow::mousePressEvent(QMouseEvent* mouse_press_event) {
+    QWidget* focused_widget { QApplication::focusWidget() };
+
+    if(qobject_cast<QSpinBox*>(focused_widget) || qobject_cast<HotkeyRecorderWidget*>(focused_widget)) {
+        focused_widget->clearFocus();
+    }
+
+    return QMainWindow::mousePressEvent(mouse_press_event);
+}
+
 bool MainWindow::nativeEvent(const QByteArray& event_type, void* message, qintptr* result) {
     MSG* msg { reinterpret_cast<MSG*>(message) };
 

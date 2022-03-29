@@ -63,6 +63,7 @@ public slots:
     void spawnVkidTableDialog();
 
 protected:
+    virtual void mousePressEvent(QMouseEvent* mouse_press_event) override;
     virtual bool nativeEvent(const QByteArray& event_type, void* message, qintptr* result) override;
 
 public:
