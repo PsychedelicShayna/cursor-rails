@@ -8,7 +8,7 @@
 !source/
 !indigo-stylesheet/
 !hotkey-recorder-widget-qt/
-!vkid-table-widget-qt
+!vkid-table-widget-qt/
 
 !release/
 release/*
