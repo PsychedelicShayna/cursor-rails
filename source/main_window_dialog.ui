@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>387</width>
-    <height>159</height>
+    <height>190</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -129,6 +129,19 @@
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayoutHotkeyRecorders"/>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButtonOpenVkidTable">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>25</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Open VKID Table</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>

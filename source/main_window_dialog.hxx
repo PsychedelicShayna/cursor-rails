@@ -13,8 +13,12 @@
 #include <QtCore/QTimer>
 
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QPushButton>
 
 #include <hotkey_recorder_widget.hpp>
+#include <vkid_table_widget.hpp>
+
+#include "vkid_table_widget_dialog.hxx"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -31,6 +35,8 @@ signals:
 
 protected:
     Ui::MainWindow* ui;
+
+    VkidTableWidgetDialog* vkidTableWidgetDialog;
 
     HotkeyRecorderWidget* hotkeyRecorderHorizontalRail,
                         * hotkeyRecorderVerticalRail;
@@ -53,6 +59,8 @@ public slots:
 
     void registerHorizontalRailHotkey(HotkeyRecorderWidget::Hotkey hotkey);
     void registerVerticalRailHotkey(HotkeyRecorderWidget::Hotkey hotkey);
+
+    void spawnVkidTableDialog();
 
 protected:
     virtual bool nativeEvent(const QByteArray& event_type, void* message, qintptr* result) override;

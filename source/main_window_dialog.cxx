@@ -113,6 +113,18 @@ void MainWindow::registerVerticalRailHotkey(HotkeyRecorderWidget::Hotkey hotkey)
     ui->spinBoxVerticalHotkeyVkid->setValue(hotkey.Vkid);
 }
 
+void MainWindow::spawnVkidTableDialog() {
+    if(vkidTableWidgetDialog == nullptr) {
+        vkidTableWidgetDialog = new VkidTableWidgetDialog { this };
+
+        connect(vkidTableWidgetDialog, &VkidTableWidgetDialog::destroyed, [this]() -> void {
+            vkidTableWidgetDialog = nullptr;
+        });
+
+        vkidTableWidgetDialog->show();
+    }
+}
+
 bool MainWindow::nativeEvent(const QByteArray& event_type, void* message, qintptr* result) {
     MSG* msg { reinterpret_cast<MSG*>(message) };
 
@@ -128,13 +140,14 @@ bool MainWindow::nativeEvent(const QByteArray& event_type, void* message, qintpt
         }
     }
 
-    QMainWindow::nativeEvent(event_type, message, result);
+    return QMainWindow::nativeEvent(event_type, message, result);
 }
 
 MainWindow::MainWindow(QWidget* parent)
     :
       QMainWindow                     { parent                            },
       ui                              { new Ui::MainWindow                },
+      vkidTableWidgetDialog           { nullptr                           },
       hotkeyRecorderHorizontalRail    { new HotkeyRecorderWidget { this } },
       hotkeyRecorderVerticalRail      { new HotkeyRecorderWidget { this } },
       horizontalRail                  { 0x41414141                        },
@@ -177,6 +190,9 @@ MainWindow::MainWindow(QWidget* parent)
 
     connect(this,                         &MainWindow::verticalRailHotkeyPressed,
             this,                         &MainWindow::toggleVerticalRailActivated);
+
+    connect(ui->pushButtonOpenVkidTable,  &QPushButton::clicked,
+            this,                         &MainWindow::spawnVkidTableDialog);
 
     connect(ui->spinBoxHorizontalHotkeyVkid, &QSpinBox::valueChanged, [this](quint32 new_value) -> void {
         if(horizontalRail.hotkeyVkid != new_value) {
