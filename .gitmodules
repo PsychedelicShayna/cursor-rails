@@ -3,3 +3,9 @@
 	url = https://github.com/PsychedelicShayna/indigo-stylesheet.git
 	branch = cursor-rails
 
+[submodule "qt-hotkey-recorder-widget"]
+	path = qt-hotkey-recorder-widget
+	url = https://github.com/PsychedelicShayna/qt-hotkey-recorder-widget
+[submodule "qt-vkid-table-widget"]
+	path = qt-vkid-table-widget
+	url = https://github.com/PsychedelicShayna/qt-vkid-table-widget
