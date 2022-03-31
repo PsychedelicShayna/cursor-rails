@@ -6,9 +6,7 @@
 !*.pro
 
 !source/
-!indigo-stylesheet/
-!qt-hotkey-recorder-widget/
-!qt-vkid-table-widget/
+!submodules/
 
 !release/
 release/*
