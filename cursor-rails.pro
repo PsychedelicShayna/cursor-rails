@@ -7,6 +7,23 @@ QMAKE_CXXFLAGS += /std:c++17
 
 TARGET = cursor-rails
 
+
+# SUBMODULE: Qt Hotkey Recorder Widget
+# ==================================================
+INCLUDEPATH += submodules/qt-hotkey-recorder-widget/
+SOURCES     += submodules/qt-hotkey-recorder-widget/hotkey_recorder_widget.cpp
+HEADERS     += submodules/qt-hotkey-recorder-widget/hotkey_recorder_widget.hpp
+# ==================================================
+
+
+# SUBMODULE: Qt Vkid Table Widget
+# ==================================================
+INCLUDEPATH += submodules/qt-vkid-table-widget/source
+SOURCES     += submodules/qt-vkid-table-widget/source/vkid_table_widget.cpp
+HEADERS     += submodules/qt-vkid-table-widget/source/vkid_table_widget.hpp
+# ==================================================
+
+
 SOURCES += \
     source/main.cpp \
     source/main_window_dialog.cxx \
@@ -22,10 +39,3 @@ FORMS += \
 
 LIBS += user32.lib
 
-INCLUDEPATH += submodules/qt-hotkey-recorder-widget/source/
-SOURCES     += submodules/qt-hotkey-recorder-widget/source/hotkey_recorder_widget.cpp
-HEADERS     += submodules/qt-hotkey-recorder-widget/source/hotkey_recorder_widget.hpp
-
-INCLUDEPATH += submodules/qt-vkid-table-widget/source
-SOURCES     += submodules/qt-vkid-table-widget/source/vkid_table_widget.cpp
-HEADERS     += submodules/qt-vkid-table-widget/source/vkid_table_widget.hpp
