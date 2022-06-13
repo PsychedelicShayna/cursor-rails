@@ -1,13 +1,3 @@
-/*
-
-!.gitignore
-!README.md
-!LICENSE
-!*.pro
-
-!source/
-!submodules/
-
-!release/
-release/*
-!release/create_release_archive.py
+builds
+*.user
+release
